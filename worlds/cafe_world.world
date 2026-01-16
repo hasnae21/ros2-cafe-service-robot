@@ -1,0 +1,952 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+  <world name="cafe_restaurant">
+    
+    <!-- Lumière -->
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <!-- Sol -->
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Wood</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Paramètres physiques -->
+    <gravity>0 0 -9.8</gravity>
+    <physics type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+
+    <!-- Scène -->
+    <scene>
+      <ambient>0.6 0.6 0.6 1</ambient>
+      <background>0.8 0.8 0.9 1</background>
+      <shadows>1</shadows>
+    </scene>
+
+    <!-- ==================== MURS DU CAFÉ ==================== -->
+    
+    <!-- Mur NORD (haut) -->
+    <model name='wall_north'>
+      <static>1</static>
+      <pose>0 8 1 0 0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>20 0.2 2</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>20 0.2 2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Bricks</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Mur SUD (bas) -->
+    <model name='wall_south'>
+      <static>1</static>
+      <pose>0 -8 1 0 0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>20 0.2 2</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>20 0.2 2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Bricks</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Mur EST (droite) -->
+    <model name='wall_east'>
+      <static>1</static>
+      <pose>10 0 1 0 0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.2 16 2</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.2 16 2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Bricks</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Mur OUEST (gauche) -->
+    <model name='wall_west'>
+      <static>1</static>
+      <pose>-10 0 1 0 0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.2 16 2</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.2 16 2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Bricks</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ==================== TABLE 1 (Haut Gauche) ==================== -->
+    
+    <!-- Plateau de table 1 -->
+    <model name='table1_top'>
+      <static>1</static>
+      <pose>-5 4 0.75 0 0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>1.5 0.8 0.05</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>1.5 0.8 0.05</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Wood</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Pied de table 1 -->
+    <model name='table1_leg'>
+      <static>1</static>
+      <pose>-5 4 0.375 0 0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.05</radius>
+              <length>0.75</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.05</radius>
+              <length>0.75</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Chaise 1A (devant table 1) -->
+    <model name='chair1a'>
+      <static>1</static>
+      <pose>-5 5.2 0.25 0 0 0</pose>
+      <link name='seat'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.05</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.05</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Red</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Dossier chaise 1A -->
+    <model name='chair1a_back'>
+      <static>1</static>
+      <pose>-5 5.45 0.55 0 0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.5 0.05 0.6</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.5 0.05 0.6</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Red</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Chaise 1B (derrière table 1) -->
+    <model name='chair1b'>
+      <static>1</static>
+      <pose>-5 2.8 0.25 0 0 3.14159</pose>
+      <link name='seat'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.05</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.05</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Red</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Dossier chaise 1B -->
+    <model name='chair1b_back'>
+      <static>1</static>
+      <pose>-5 2.55 0.55 0 0 3.14159</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.5 0.05 0.6</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.5 0.05 0.6</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Red</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ==================== TABLE 2 (Haut Droite) ==================== -->
+    
+    <!-- Plateau de table 2 -->
+    <model name='table2_top'>
+      <static>1</static>
+      <pose>5 4 0.75 0 0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>1.5 0.8 0.05</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>1.5 0.8 0.05</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Wood</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Pied de table 2 -->
+    <model name='table2_leg'>
+      <static>1</static>
+      <pose>5 4 0.375 0 0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.05</radius>
+              <length>0.75</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.05</radius>
+              <length>0.75</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Chaise 2A -->
+    <model name='chair2a'>
+      <static>1</static>
+      <pose>5 5.2 0.25 0 0 0</pose>
+      <link name='seat'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.05</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.05</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Blue</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Dossier chaise 2A -->
+    <model name='chair2a_back'>
+      <static>1</static>
+      <pose>5 5.45 0.55 0 0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.5 0.05 0.6</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.5 0.05 0.6</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Blue</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Chaise 2B -->
+    <model name='chair2b'>
+      <static>1</static>
+      <pose>5 2.8 0.25 0 0 3.14159</pose>
+      <link name='seat'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.05</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.05</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Blue</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Dossier chaise 2B -->
+    <model name='chair2b_back'>
+      <static>1</static>
+      <pose>5 2.55 0.55 0 0 3.14159</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.5 0.05 0.6</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.5 0.05 0.6</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Blue</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ==================== TABLE 3 (Bas Gauche) ==================== -->
+    
+    <!-- Plateau de table 3 -->
+    <model name='table3_top'>
+      <static>1</static>
+      <pose>-5 -4 0.75 0 0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>1.5 0.8 0.05</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>1.5 0.8 0.05</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Wood</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Pied de table 3 -->
+    <model name='table3_leg'>
+      <static>1</static>
+      <pose>-5 -4 0.375 0 0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.05</radius>
+              <length>0.75</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.05</radius>
+              <length>0.75</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Chaise 3A -->
+    <model name='chair3a'>
+      <static>1</static>
+      <pose>-5 -2.8 0.25 0 0 0</pose>
+      <link name='seat'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.05</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.05</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Dossier chaise 3A -->
+    <model name='chair3a_back'>
+      <static>1</static>
+      <pose>-5 -2.55 0.55 0 0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.5 0.05 0.6</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.5 0.05 0.6</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Chaise 3B -->
+    <model name='chair3b'>
+      <static>1</static>
+      <pose>-5 -5.2 0.25 0 0 3.14159</pose>
+      <link name='seat'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.05</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.05</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Dossier chaise 3B -->
+    <model name='chair3b_back'>
+      <static>1</static>
+      <pose>-5 -5.45 0.55 0 0 3.14159</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.5 0.05 0.6</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.5 0.05 0.6</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ==================== TABLE 4 (Bas Droite) ==================== -->
+    
+    <!-- Plateau de table 4 -->
+    <model name='table4_top'>
+      <static>1</static>
+      <pose>5 -4 0.75 0 0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>1.5 0.8 0.05</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>1.5 0.8 0.05</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Wood</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Pied de table 4 -->
+    <model name='table4_leg'>
+      <static>1</static>
+      <pose>5 -4 0.375 0 0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.05</radius>
+              <length>0.75</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.05</radius>
+              <length>0.75</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Chaise 4A -->
+    <model name='chair4a'>
+      <static>1</static>
+      <pose>5 -2.8 0.25 0 0 0</pose>
+      <link name='seat'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.05</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.05</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Yellow</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Dossier chaise 4A -->
+    <model name='chair4a_back'>
+      <static>1</static>
+      <pose>5 -2.55 0.55 0 0 0</pose>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.5 0.05 0.6</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.5 0.05 0.6</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts</uri>
+<name>Gazebo/Yellow</name>
+</script>
+</material>
+</visual>
+</link>
+</model>
+<!-- Chaise 4B -->
+<model name='chair4b'>
+  <static>1</static>
+  <pose>5 -5.2 0.25 0 0 3.14159</pose>
+  <link name='seat'>
+    <collision name='collision'>
+      <geometry>
+        <box>
+          <size>0.5 0.5 0.05</size>
+        </box>
+      </geometry>
+    </collision>
+    <visual name='visual'>
+      <geometry>
+        <box>
+          <size>0.5 0.5 0.05</size>
+        </box>
+      </geometry>
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Yellow</name>
+        </script>
+      </material>
+    </visual>
+  </link>
+</model>
+
+<!-- Dossier chaise 4B -->
+<model name='chair4b_back'>
+  <static>1</static>
+  <pose>5 -5.45 0.55 0 0 3.14159</pose>
+  <link name='link'>
+    <collision name='collision'>
+      <geometry>
+        <box>
+          <size>0.5 0.05 0.6</size>
+        </box>
+      </geometry>
+    </collision>
+    <visual name='visual'>
+      <geometry>
+        <box>
+          <size>0.5 0.05 0.6</size>
+        </box>
+      </geometry>
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Yellow</name>
+        </script>
+      </material>
+    </visual>
+  </link>
+</model>
+
+<!-- ==================== OBSTACLES (Colonnes) ==================== -->
+
+<!-- Colonne 1 -->
+<model name='pillar1'>
+  <static>1</static>
+  <pose>0 0 1 0 0 0</pose>
+  <link name='link'>
+    <collision name='collision'>
+      <geometry>
+        <cylinder>
+          <radius>0.3</radius>
+          <length>2</length>
+        </cylinder>
+      </geometry>
+    </collision>
+    <visual name='visual'>
+      <geometry>
+        <cylinder>
+          <radius>0.3</radius>
+          <length>2</length>
+        </cylinder>
+      </geometry>
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Grey</name>
+        </script>
+      </material>
+    </visual>
+  </link>
+</model>
+
+<!-- Colonne 2 -->
+<model name='pillar2'>
+  <static>1</static>
+  <pose>-7 0 1 0 0 0</pose>
+  <link name='link'>
+    <collision name='collision'>
+      <geometry>
+        <cylinder>
+          <radius>0.3</radius>
+          <length>2</length>
+        </cylinder>
+      </geometry>
+    </collision>
+    <visual name='visual'>
+      <geometry>
+        <cylinder>
+          <radius>0.3</radius>
+          <length>2</length>
+        </cylinder>
+      </geometry>
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Grey</name>
+        </script>
+      </material>
+    </visual>
+  </link>
+</model>
+
+<!-- Colonne 3 -->
+<model name='pillar3'>
+  <static>1</static>
+  <pose>7 0 1 0 0 0</pose>
+  <link name='link'>
+    <collision name='collision'>
+      <geometry>
+        <cylinder>
+          <radius>0.3</radius>
+          <length>2</length>
+        </cylinder>
+      </geometry>
+    </collision>
+    <visual name='visual'>
+      <geometry>
+        <cylinder>
+          <radius>0.3</radius>
+          <length>2</length>
+        </cylinder>
+      </geometry>
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Grey</name>
+        </script>
+      </material>
+    </visual>
+  </link>
+</model>
+  </world>
+</sdf>

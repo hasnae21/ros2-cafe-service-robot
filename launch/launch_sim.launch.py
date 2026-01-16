@@ -17,7 +17,7 @@ def generate_launch_description():
     # This allows the user to specify the path to the Gazebo world file to be loaded
     declare_world_file_cmd = DeclareLaunchArgument(
         'world_file',
-        default_value=os.path.join(get_package_share_directory(package_name), 'worlds', 'simple.world'),
+        default_value=os.path.join(get_package_share_directory(package_name), 'worlds', 'cafe_world.world'),
         description='Full path to the world file to load'
     )
 
