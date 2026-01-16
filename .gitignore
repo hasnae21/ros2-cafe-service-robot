@@ -1,0 +1,22 @@
+# ROS2 build files
+build/
+install/
+log/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE
+.vscode/
+.idea/
+
+# Maps (ne pas pousser les cartes générées)
+*.pgm
+*.yaml
+maps/
+
+# Temporary files
+*~
+*.swp
