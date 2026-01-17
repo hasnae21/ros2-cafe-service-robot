@@ -11,7 +11,7 @@ def generate_launch_description():
     # Declare arguments
     slam_params_file_arg = DeclareLaunchArgument(
         'slam_params_file',
-        default_value='/home/taher/ros2_ws/src/ros2-slam-auto-navigation/config/mapper_params_online_async.yaml',
+        default_value='/home/ros2_ws_project/src/ros2-slam-auto-navigation/config/mapper_params_online_async.yaml',
         description='Path to the SLAM toolbox parameter file.'
     )
     use_sim_time_arg = DeclareLaunchArgument(

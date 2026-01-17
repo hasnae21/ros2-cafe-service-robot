@@ -32,9 +32,23 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
+# Installer les scripts Python
+install(PROGRAMS
+  scripts/autonomous_explorer.py
+  scripts/navigate_to_table.py
+  scripts/table_navigator_gui.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+# Installer le fichier de configuration
 install(
-  DIRECTORY config description launch worlds
+  DIRECTORY
+    config
+    description
+    launch
+    worlds
   DESTINATION share/${PROJECT_NAME}
 )
+
 
 ament_package()
